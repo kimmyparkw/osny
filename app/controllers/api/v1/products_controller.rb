@@ -2,12 +2,11 @@ class Api::V1::ProductsController < ApplicationController
     before_action :find_product, only: [:show, :update, :destroy]
 
     def index
-        @products = Product.all
+        @products = Product.where(collection_id: params[:collection_id])
         render json: @products
     end
 
     def show
-        @product = Product.where(collection_id: params[:collection_id], id: params[:id])
         render json: @product
     end
 
@@ -44,6 +43,6 @@ class Api::V1::ProductsController < ApplicationController
     end
 
     def find_product
-        @product = Product.where(collection_id: params[:collection_id], id: params[:id])
+        @product = Product.find(params[:id])
     end
 end
