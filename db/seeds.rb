@@ -8,6 +8,8 @@
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 # if Rails.env.development?
 
+User.create(name: 'test user', username: 'testuser', email: 'testuser@test.com', password_digest: 'testuser')
+
 academia = Collection.create(
     title: "Academia",
     release_date: Date.today
