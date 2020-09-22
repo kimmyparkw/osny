@@ -1,4 +1,4 @@
-class Api::V1::CollectionsController < ApplicationController
+class CollectionsController < ApplicationController
         before_action :find_collection, only: [:show, :update, :destroy]
     
         def index

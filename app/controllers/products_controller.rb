@@ -1,4 +1,4 @@
-class Api::V1::ProductsController < ApplicationController
+class ProductsController < ApplicationController
     before_action :find_product, only: [:show, :update, :destroy]
 
     def index

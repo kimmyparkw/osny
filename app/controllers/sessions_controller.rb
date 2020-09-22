@@ -1,8 +1,8 @@
-class SessionsController < ApplicationController
+class SessionsController < ApiController
     skip_before_action :require_login, only: [:create], raise: false
 
     def create
-        user = User.validate_login(paramsn[:username], params[:password])
+        user = User.validate_login(params[:username], params[:password])
         if user
             allow_token_to_be_used_only_once_for(user)
             send_token_for_valid_login_of(user)
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
     def destroy
         logout
-        head: ok
+        head :ok
     end
 
     private
@@ -29,5 +29,5 @@ class SessionsController < ApplicationController
     def logout
         current_user.invalidate_token
     end
-    
+
 end
