@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :users
       resources :collections do
         resources :products
       end
     end
   end
+
+  post "/login" => "sessions#create"
+  delete "/logout" => "sessions#destroy"
+  get "/profile" => "users#profile"
+  resources :users
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

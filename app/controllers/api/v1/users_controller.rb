@@ -1,48 +1,19 @@
-class Api::V1::UsersController < ApplicationController
-    before_action :find_user, only: [:show, :update, :destroy]
-
-    def index
-        @users = User.all
-        render json: @users
-    end
-
-    def show
-        render json: @user
-    end
+class Api::V1::UsersController < ApiController
+    before_action :require_login, except: [:create]
 
     def create
-        @user = User.create(user_params)
-        if @user
-            render json: @user
-        else
-            render error: { error: 'Unable to create user' }, status: 400
-        end
+        user = User.create!(user_params)
+        render json: { token: user.auth_token}
     end
 
-    def update
-        if @user
-            @user.update(:username)
-            render json: { message: 'User updated successfully' }, status: 200
-        else
-            render error: { error: 'Unable to update user' }, status: 400
-        end
-    end
-
-    def destroy
-        if @user
-            @user.destroy
-        else
-            render error: { error: 'Unable to delete user' }, status: 400
-        end
+    def profile
+        user = User.find_by!(auth_token: request.headers[:token])
+        render json: { user: { name: user.name, username: user.username, email: user.email } }
     end
 
     private
     def user_params
-        params.require(:user).permit(:name, :email, :username, :password_digest)
-    end
-    
-    def find_user
-        @user = User.find(params[:id])
+        params.require(:user).permit(:name, :email, :username, :password)
     end
     
 end
