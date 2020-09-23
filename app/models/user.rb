@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_secure_token :auth_token
 
     def invalidate_token
-        self.update(auth_toke: nil)
+        self.update(auth_token: nil)
     end
 
     def self.validate_login(username, password)
