@@ -1,38 +1,73 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
+  background-image: url("clean-closet-background.jpeg")
+}
+
+/* Navbar/Header */
+nav {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  height: 4em;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.color {
+  opacity: .7;
+  width: 100%;
+  height: 4em;
+  background-color: gainsboro;
+  position: absolute;
+  top: 0;
+}
+
+.navlinks {
+  display: flex;
+  justify-content: space-between;
+  width: 15em;
+  margin: auto 2em;
+}
+
+nav p {
+  margin: auto 2em;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Footer */
+footer {
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4em;
+}
+
+footer h4 {
+  position: relative;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Main containers */
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
