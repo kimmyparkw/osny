@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 import AllProducts from './AllProducts'
 import Collections from './Collections'
 import SingleProduct from './SingleProduct'
@@ -32,7 +32,12 @@ class AppController extends React.Component {
     getSingleProduct = () => {
         fetch(`/products/${this.state.currentId}`)
         .then(res => res.json())
-        .then(res => console.log(res))
+        .then(res => {
+            this.setState({
+                isLoaded: true,
+                singleProductData: res
+            })
+        })
     }
 
     getAllCollections = () => {
@@ -67,7 +72,7 @@ class AppController extends React.Component {
             case 'collections':
                 return <Collections allCollectionData={this.state.allCollectionData} />
             case 'show':
-                return <SingleProduct />
+                return <SingleProduct singleProductData={this.state.singleProductData} />
         }
     }
 
