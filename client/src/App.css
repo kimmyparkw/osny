@@ -92,6 +92,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 4em;
 }
 
 /* About page */
@@ -110,4 +111,19 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+/* Collections page */
+.collections-container {
+  padding-top: 0;
+  justify-content: space-around;
+}
+
+.collection {
+  width: 100vw;
+  height: 8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }

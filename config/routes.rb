@@ -3,6 +3,9 @@ Rails.application.routes.draw do
         resources :products
       end
 
+  get "/products" => "products#allProducts"
+  get "/products/:id" => "products#show"
+
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
   get "/profile" => "users#profile"
