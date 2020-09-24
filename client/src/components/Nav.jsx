@@ -6,7 +6,7 @@ function Nav() {
         <nav>
             <div className="color"></div>
             <div className="navbar">
-                <p>OSNY</p>
+                <Link to='/' className='home'>OSNY</Link>
                 <div className="navlinks">
                     <Link to='/about'>About</Link>
                     <Link to='/shop'>Shop</Link>
