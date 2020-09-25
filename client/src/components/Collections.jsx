@@ -6,7 +6,7 @@ class Collections extends React.Component {
         return (
             <main className='collections-container'>
                 {this.props.allCollectionData.map((collection, i) => {
-                        return <Link to='/collection/products'><div key={i} className='collection'>
+                        return <Link key={i} to='/collection/products'><div className='collection'>
                             <h1>{collection.title}</h1>
                         </div></Link>
                 })}
