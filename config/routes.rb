@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :order_products
+  resources :orders
       resources :collections do
         resources :products
       end

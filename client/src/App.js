@@ -12,6 +12,8 @@ import Profile from './components/Auth/Profile'
 
 import './App.css';
 import { Redirect, Route } from 'react-router-dom'
+import { loadStripe } from '@stripe/stripe-js'
+const stripePromise = loadStripe(pk_test_51HVkiOK4H4g8C88dJatdwW2xhsUdlQyJg3aySFB2TlqCG79dhSXN09bH84fsDrY0kLpZSMHioixOpkbw9BHUKr5l00uXetARMS)
 
 class App extends React.Component{
   constructor() {
