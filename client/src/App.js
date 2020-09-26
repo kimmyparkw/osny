@@ -32,7 +32,6 @@ class App extends React.Component{
 
 
   handleFormSubmit = (e, route, values) => {
-    console.log('e', e)
     console.log('route', route)
     console.log('values', values)
     e.preventDefault()
@@ -44,7 +43,6 @@ class App extends React.Component{
       body: JSON.stringify(values)
     }).then(res => res.json())
     .then(res => {
-      console.log(route)
       if (res.token) {
         Auth.authenticateToken(res.token)
         this.setState({
