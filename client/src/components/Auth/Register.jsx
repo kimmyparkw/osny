@@ -5,7 +5,7 @@ class Register extends React.Component {
     constructor() {
         super()
         this.state = ({
-            route: '/register',
+            route: '/auth/register',
         })
     }
 

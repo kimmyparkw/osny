@@ -38,12 +38,13 @@ class App extends React.Component{
     e.preventDefault()
     fetch(route, {
       method: "POST",
-      body: JSON.stringify(values),
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
+      body: JSON.stringify(values)
     }).then(res => res.json())
     .then(res => {
+      console.log(route)
       if (res.token) {
         Auth.authenticateToken(res.token)
         this.setState({

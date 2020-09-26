@@ -7,9 +7,7 @@
   "author": "<kimmy.park820@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "cd client && yarn install && yarn build && cd ..",
-    "deploy": "cp -a client/build/. public/",
-    "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
+    "heroku-postbuild": "cd client && npm install && npm run build && npm run deploy"
   },
   "engines": {
     "yarn": "1.22.4",
