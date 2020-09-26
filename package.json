@@ -8,10 +8,5 @@
   "license": "MIT",
   "scripts": {
     "heroku-postbuild": "cd client && npm install && npm run build && npm run deploy"
-  },
-  "engines": {
-    "yarn": "1.22.4",
-    "npm": "6.14.7",
-    "node": "12.16.0"
   }
 }
