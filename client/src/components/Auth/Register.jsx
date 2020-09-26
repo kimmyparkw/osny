@@ -2,6 +2,13 @@ import React from 'react'
 import UserForm from'./UserForm'
 
 class Register extends React.Component {
+    constructor() {
+        super()
+        this.state = ({
+            route: '/register',
+        })
+    }
+
     render() {
         return (
             <div className='userform'>

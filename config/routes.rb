@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
   get "/profile" => "users#profile"
   post "/register" => "users#create"
-  resources :users
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

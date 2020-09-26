@@ -15,19 +15,22 @@ function About() {
                     Our Values:<br/>
                     We believe in integrity, inclusivity, sustainability<br/>
                     diversity, accessibility, and giving that<br/>
-                    little something extra to make someone's day.
+                    little something extra to make someone's day.<br/>
+                    We understand the responsibility that comes with reselling<br/>
+                    thrifted goods. We support local thrift stores without<br/>
+                    them clean and making sure to leave plenty of "the good stuff"<br/>
+                    for the people who rely on the low prices that the<br/>
+                    thrift stores regularly provide.
                 </p>
             </div>
             <div className='about3'>
                 <p>
                     The Owner:<br/>
-                    Kimmy Park-Wolmarans was tired of seeing brands<br/>
-                    market themselves as sustainable while charging absurd prices.<br/>
-                    The same went for the super cute vintage shops<br/>
-                    that would buy items at thrift stores for super cheap and then<br/>
-                    mark up the price like crazy. Sustainable should mean accessible<br/>
-                    and resellers should be conscious of the role they play<br/>
-                    in the gentrification of local thrift stores.
+                    Kimmy Park-Wolmarans has a background in<br/>
+                    fashion design and software engineering.<br/>
+                    Her newfound consciousness of sustainable fashion<br/>
+                    and love of thrifting pushed her to start her own<br/>
+                    business: Old Souls || New You.
                 </p>
             </div>
         </main>

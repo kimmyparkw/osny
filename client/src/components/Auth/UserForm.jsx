@@ -26,12 +26,6 @@ class UserForm extends React.Component {
         
     }
 
-    clearForm = (e) => {
-        const name = e.target.name
-        this.setState({
-            [name]: '',
-        })
-    }
 
     render() {
         return(

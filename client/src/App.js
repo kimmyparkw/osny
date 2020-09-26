@@ -8,6 +8,7 @@ import AppController from './components/AppController'
 import Login from './components/Auth/Login'
 import Register from './components/Auth/Register'
 import Auth from './modules/Auth.js'
+import Profile from './components/Auth/Profile'
 
 import './App.css';
 import { Redirect, Route } from 'react-router-dom'
@@ -16,7 +17,7 @@ class App extends React.Component{
   constructor() {
     super()
     this.state = {
-      auth: Auth.isUserAuthenticated,
+      auth: Auth.isUserAuthenticated(),
       user: null,
       loginUserName: '',
       loginPassword: '',
@@ -31,6 +32,9 @@ class App extends React.Component{
 
 
   handleFormSubmit = (e, route, values) => {
+    console.log('e', e)
+    console.log('route', route)
+    console.log('values', values)
     e.preventDefault()
     fetch(route, {
       method: "POST",
@@ -40,17 +44,10 @@ class App extends React.Component{
       }
     }).then(res => res.json())
     .then(res => {
-      console.log(res)
       if (res.token) {
         Auth.authenticateToken(res.token)
         this.setState({
           auth: Auth.isUserAuthenticated(),
-          loginUserName: '',
-          loginPassword: '',
-          registerUserName: '',
-          registerEmail: '',
-          registerPassword: '',
-          registerName: '',
           shouldFireRedirect: true,
           redirectPath: '/profile'
         })
@@ -68,23 +65,11 @@ class App extends React.Component{
       }
     }).then(res => {
       Auth.deauthenticateUser()
-      console.log("testing logout", this.state.auth)
       this.setState({
         auth: Auth.isUserAuthenticated()
       })
     })
   }
-
-  // componentDidMount() {
-  //   this.props.resetFireRedirect()
-  //   fetch('/profile', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Authorization': `Token ${Auth.getToken()}`,
-  //       token: `${Auth.getToken()}`,
-  //     }
-  //   })
-  // }
 
   render() {
     return (
@@ -100,12 +85,17 @@ class App extends React.Component{
           <Route exact path="/register" render={() => (
             this.state.auth
               ? <Redirect to='/profile' />
-              : <Register />
+              : <Register handleFormSubmit={this.handleFormSubmit} currentPage='new'/>
           )} />
           <Route exact path="/login" render={() => (
             this.state.auth
               ? <Redirect to='/profile' />
               : <Login handleFormSubmit={this.handleFormSubmit} currentPage='login' />
+          )} />
+          <Route exact path="/profile" render={() => (
+            this.state.auth
+              ? <Profile />
+              : <Redirect to='/login' />
           )} />
           <Route exact path='/logout' component={Home}/> 
         </div>
