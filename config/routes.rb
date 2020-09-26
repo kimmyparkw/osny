@@ -3,10 +3,13 @@ Rails.application.routes.draw do
         resources :products
       end
 
+  get "/products" => "products#allProducts"
+  get "/products/:id" => "products#show"
+
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
   get "/profile" => "users#profile"
-  resources :users
+  post "/register" => "users#create"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

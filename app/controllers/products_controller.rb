@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
     before_action :find_product, only: [:show, :update, :destroy]
 
+    def allProducts
+        @products = Product.all
+        render json: @products
+    end
+
     def index
         @products = Product.where(collection_id: params[:collection_id])
         render json: @products
