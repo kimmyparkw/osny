@@ -38,7 +38,7 @@ class CollectionsController < ApplicationController
     
         private
         def collection_params
-            params.require(:collection).permit(:title, :release_date)
+            params.require(:collection).permit(:title, :release_date, :image)
         end
 
         def find_collection
