@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  resources :order_products
-  resources :orders
-      resources :collections do
-        resources :products
-      end
+  resources :collections do
+    resources :products
+  end
 
   get "/products" => "products#allProducts"
   get "/products/:id" => "products#show"
@@ -12,6 +10,11 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
   get "/profile" => "users#profile"
   post "/auth/register" => "users#create"
+
+  
+  get "/user/:id/order" => "orders#index"
+  post "/user/:id/order" => "orders#create"
+  get "/user/:id/order/:id" => "orders#show"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

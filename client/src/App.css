@@ -198,7 +198,7 @@ main {
 
 /* Collections page */
 
-.collection {
+.collection-container {
   width: 100vw;
   height: 8em;
   display: flex;
@@ -215,12 +215,26 @@ main {
   /* transition: display 2s; */
 }
 
-.collection:hover .collection-title {
+.collection-container:hover .collection-title {
   display: none;
 }
 
-.collection:hover .shop-now {
+.collection-container:hover .shop-now {
   display: block;
+}
+
+.collection-image {
+  background-image: url('./images/londonfog.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 -15em;
+  height: 100%;
+  width: 100%;
+  opacity: .8;
+}
+
+.collection {
+  position: absolute;
 }
 
 /* Single product page */

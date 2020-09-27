@@ -4,10 +4,10 @@ class UserForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = ({
-            name: '',
-            email: '',
-            username: '',
-            password: '',
+                name: '',
+                email: '',
+                username: '',
+                password: '',
         })
         if (props.currentPage === 'new') {
             this.state.buttonName = 'Register'
@@ -29,7 +29,7 @@ class UserForm extends React.Component {
 
     render() {
         return(
-            <form onSubmit={(evt) => this.props.handleFormSubmit(evt, this.props.state.route, this.state)}>
+            <form onSubmit={(evt) => this.props.handleFormSubmit(evt, this.props.state.route, {user: this.state})}>
                 {this.props.currentPage === ('new') && <input type="text" name="name" placeholder="name" value={this.state.name} onChange={this.handleFormChanges} />}
                 {this.props.currentPage === ('new') && <input type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleFormChanges} />}
                 <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleFormChanges} required />

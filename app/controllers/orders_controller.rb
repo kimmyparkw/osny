@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   # GET /orders
   def index
-    @orders = Order.all
+    @orders = Order.where(user_id: params[:user_id], id: params[:id])
 
     render json: @orders
   end
@@ -15,23 +15,24 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    @order = Order.new(order_params)
+    product_1 = Product.find(order_params[:product_id])
+    quantity_1 = order_params[:quantity]
 
-    if @order.save
-      render json: @order, status: :created, location: @order
-    else
-      render json: @order.errors, status: :unprocessable_entity
-    end
+    order = Order.create(user_id: order_params[:user_id] )
+    order_items = OrderItem.create(order_id: order.id, product_id: order_params[:product_id], item_price: product_1.price_in_cents)
+    user = User.find(order_params[:user_id])
+    user.update(current_order: order.id )
+    order_items = order.order_items
   end
 
-  # PATCH/PUT /orders/1
-  def update
-    if @order.update(order_params)
-      render json: @order
-    else
-      render json: @order.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /orders/1
+  # def update
+  #   if @order.update(order_params)
+  #     render json: @order
+  #   else
+  #     render json: @order.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /orders/1
   def destroy
@@ -49,3 +50,4 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:user_id)
     end
 end
+

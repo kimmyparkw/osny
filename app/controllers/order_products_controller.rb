@@ -8,26 +8,12 @@ class OrderProductsController < ApplicationController
     render json: @order_products
   end
 
-  # GET /order_products/1
-  def show
-    render json: @order_product
-  end
-
   # POST /order_products
   def create
     @order_product = OrderProduct.new(order_product_params)
 
     if @order_product.save
       render json: @order_product, status: :created, location: @order_product
-    else
-      render json: @order_product.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /order_products/1
-  def update
-    if @order_product.update(order_product_params)
-      render json: @order_product
     else
       render json: @order_product.errors, status: :unprocessable_entity
     end

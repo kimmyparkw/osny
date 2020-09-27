@@ -2,6 +2,7 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
     has_secure_password
     has_secure_token :auth_token
+    has_one :order
 
     def invalidate_token
         self.update(auth_token: nil)

@@ -57,6 +57,7 @@ class App extends React.Component{
       console.log(err)
     })
   }
+  
   logoutUser = () => {
     fetch('/logout', {
       method: 'DELETE',
