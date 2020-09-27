@@ -6,7 +6,7 @@ function Nav(props) {
         <nav>
             <div className="color"></div>
             <div className="navbar">
-                <Link to='/' className='home'>OSNY</Link>
+                <Link to='/' className='home'>OS//NY</Link>
                 <div className="navlinks">
                     <Link to='/about'>About</Link>
                     <Link to='/shop'>Shop</Link>

@@ -12,8 +12,31 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 4em;
+  align-items: center;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
   flex-grow: 1;
+  min-height: 100%;
+}
+
+h1, h2, h3, footer {
+  font-family: 'Philosopher', sans-serif;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+body, button, input {
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Navbar/Header */
@@ -21,7 +44,7 @@ nav {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 4em;
+  height: 10vh;
   position: absolute;
   top: 0;
   width: 100vw;
@@ -38,7 +61,7 @@ nav {
 nav .color {
   opacity: .7;
   width: 100vw;
-  height: 4em;
+  height: 10vh;
   background-color: gainsboro;
   position: absolute;
   top: 0;
@@ -52,7 +75,9 @@ nav .color {
 }
 
 nav .home {
-  margin: auto 2em;
+  margin: auto 1em;
+  font-family: 'Philosopher', sans-serif;
+  font-size: 1.8em;
 }
 
 a {
@@ -60,12 +85,16 @@ a {
   color: black;
 }
 
+
 /* Footer */
 footer {
   width: 100%;
   position: absolute;
   bottom: 0;
-  height: 4em;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer .color {
@@ -73,16 +102,16 @@ footer .color {
   bottom: 0;
   opacity: .7;
   width: 100%;
-  height: 4em;
+  height: 10vh;
   background-color: gainsboro;
 }
 
 footer h4 {
   position: absolute;
-  bottom: 0;
   text-align: center;
   align-items: center;
   width: 100%;
+  font-family: 'Philosopher', sans-serif;
 }
 
 /* Main containers */
@@ -92,7 +121,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 4em;
+  width: 100vw;
 }
 
 /* About page */
@@ -107,11 +136,61 @@ main {
 }
 
 /* Shop-by page */
-.shop-by {
+.shop-by-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
   width: 100vw;
+}
+
+.shop-by-color1, .shop-by-color2 {
+  position: absolute;
+  width: 50%;
+  height: 80vh;
+  background-color: gainsboro;
+  opacity: .7;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.shop-by-color1 {
+  background-image: url("./suede.jpg");
+  left: 0;
+}
+
+.shop-by-color2 {
+  background-image: url("./green.jpg");
+  right: 0;
+}
+
+.shop-by1, .shop-by2 {
+  position: absolute;
+  width: 50vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-by1 {
+  left: 0;
+}
+
+.shop-by2 {
+  right: 0;
+}
+
+.shop-button {
+  background: gainsboro;
+  padding: .5em 2em;
+  border-radius: 20px;
+}
+
+.shop-button:hover {
+  background: gray;
 }
 
 /* Collections page */
@@ -135,4 +214,28 @@ main {
   flex-direction: column;
   justify-content: space-around;
   width: 100vw;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+}
+
+input:not(:last-child) {
+  height: 3em;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 0;
+  padding-left: 15px;
+  border: .5px solid gainsboro;
+}
+
+input:last-child {
+  height: 3em;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 0;
+  border: .5px solid gainsboro;
 }

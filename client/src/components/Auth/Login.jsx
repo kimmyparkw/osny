@@ -13,7 +13,7 @@ class Login extends React.Component {
     render() {
         return (
             <div className='userform'>
-                <h3>Welcome back! Log in below.</h3>
+                <h3>Welcome back!<br/>Log in below.</h3>
                 <UserForm handleFormSubmit={this.props.handleFormSubmit} state={this.state} currentPage={this.props.currentPage} />
                 <p>Don't have an account? Register <Link to='/register'>here</Link></p>
             </div>
