@@ -13,6 +13,7 @@ class AppController extends React.Component {
             allProductsData: null,
             singleProductData: null,
             allCollectionData: null,
+            collectionProductsData: null,
             currentPage: props.currentPage,
             currentId: props.currentId
         })
@@ -51,9 +52,18 @@ class AppController extends React.Component {
         })
     }
 
-    // getCollectionProducts = () => {
-    //     fetch('/collections/:id/products')
-    // }
+    getCollectionProducts = () => {
+        fetch(`/collections/${this.state.currentId}/products`)
+        .then(res => res.json())
+        .then(res => {
+            console.log(this.state.currentPage)
+            console.log(res)
+            this.setState({
+                isLoaded: true,
+                collectionProductsData: res,
+            })
+        })
+    }
 
     componentDidMount() {
         if (this.state.currentPage === 'index') {
@@ -62,17 +72,21 @@ class AppController extends React.Component {
             this.getAllCollections()
         } else if (this.state.currentPage === 'show') {
             this.getSingleProduct()
-        }  
+        }  else if (this.state.currentPage === 'collectionproducts') {
+            this.getCollectionProducts()
+        }
     }
 
     decideWhichToRender() {
         switch(this.state.currentPage) {
             default: case 'index':
-                return <AllProducts allProductsData={this.state.allProductsData} />
+                return <AllProducts currentPage={this.state.currentPage} allProductsData={this.state.allProductsData} />
             case 'collections':
                 return <Collections allCollectionData={this.state.allCollectionData} />
             case 'show':
                 return <SingleProduct singleProductData={this.state.singleProductData} />
+            case 'collectionproducts':
+                return <AllProducts currentPage={this.state.currentPage} collectionProductsData={this.state.collectionProductsData} />
         }
     }
 

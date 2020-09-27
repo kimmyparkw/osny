@@ -83,6 +83,7 @@ class App extends React.Component{
           <Route exact path="/shop/all" render={() => (<AppController currentPage='index' />)} />
           <Route exact path="/shop/collection" render={() => (<AppController currentPage='collections' />)} />
           <Route exact path="/shop/product/:id" render={(props) => (<AppController currentPage='show' currentId={props.match.params.id} />)} />
+          <Route exact path="/shop/collection/:id/products" render={(props) => (<AppController currentPage='collectionproducts' currentId={props.match.params.id} />)} />
           <Route exact path="/register" render={() => (
             this.state.auth
               ? <Redirect to='/profile' />
