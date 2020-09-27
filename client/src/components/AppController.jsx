@@ -78,9 +78,7 @@ class AppController extends React.Component {
 
     render() {
         return (
-            <main>
-                {(this.state.isLoaded) ? this.decideWhichToRender() : <h1>Loading...</h1>}
-            </main>
+                (this.state.isLoaded) ? this.decideWhichToRender() : <h1>Loading...</h1>
         )
     }
 

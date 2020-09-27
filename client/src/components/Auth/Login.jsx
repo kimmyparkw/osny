@@ -15,7 +15,7 @@ class Login extends React.Component {
             <div className='userform'>
                 <h3>Welcome back!<br/>Log in below.</h3>
                 <UserForm handleFormSubmit={this.props.handleFormSubmit} state={this.state} currentPage={this.props.currentPage} />
-                <p>Don't have an account? Register <Link to='/register'>here</Link></p>
+                <p>Don't have an account? Register <Link to='/register' className='register-link'>here</Link></p>
             </div>
         )
     }

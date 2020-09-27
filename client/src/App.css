@@ -29,6 +29,7 @@ h1 {
 
 h2 {
   font-size: 2.5em;
+  margin: 0 0 10px 0;
 }
 
 h3 {
@@ -70,7 +71,7 @@ nav .color {
 .navlinks {
   display: flex;
   justify-content: space-between;
-  width: 15em;
+  width: 35vw;
   margin: auto 2em;
 }
 
@@ -217,6 +218,17 @@ main {
 }
 
 /* Form */
+.userform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.userform h3 {
+  margin-top: 0;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -238,4 +250,10 @@ input:last-child {
   margin: 10px;
   padding: 0;
   border: .5px solid gainsboro;
+}
+
+.register-link {
+  color: darkslategray;
+  font-weight: bold;
+  text-decoration: underline;
 }

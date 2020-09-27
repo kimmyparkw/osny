@@ -75,7 +75,7 @@ class App extends React.Component{
   render() {
     return (
       <div className="App">
-        <Nav logout={this.logoutUser} />
+        <Nav logout={this.logoutUser} auth={this.state.auth}/>
         <div className="container">
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
