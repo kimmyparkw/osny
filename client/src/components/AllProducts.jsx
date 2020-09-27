@@ -7,10 +7,10 @@ class AllProducts extends React.Component {
             return (
                 this.props.allProductsData.map((product, i) => {
                     return <div className='product' key={i}>
-                            <Link to={`/shop/product/${product.id}`}><h3>{product.title}</h3></Link>
-                            <p>{product.description}</p>
-                            <p>${product.price} + shipping</p>
-                           </div>
+                        <div className='product-image-container'>image goes here</div>
+                        <Link to={`/shop/product/${product.id}`}><h4>{product.title}</h4></Link>
+                        <p>${product.price} + shipping</p>
+                    </div>
                 })
             )
  
@@ -20,8 +20,8 @@ class AllProducts extends React.Component {
             return (
                 this.props.collectionProductsData.map((product, i) => {
                     return <div className='product' key={i}>
-                        <Link to={`/shop/product/${product.id}`}><h3>{product.title}</h3></Link>
-                        <p>{product.description}</p>
+                        <div className='product-image-container'>image goes here</div>
+                        <Link to={`/shop/product/${product.id}`}><h4>{product.title}</h4></Link>
                         <p>${product.price} + shipping</p>
                     </div>
                 })
@@ -31,10 +31,10 @@ class AllProducts extends React.Component {
 
     render() {
         return (
-            <>
+            <div className='products-container'>
                 {this.props.currentPage === 'index' && this.allProductsMap() }
                 {this.props.currentPage === 'collectionproducts' && this.collectionProductsMap() }
-            </>
+            </div>
         )
     }
 }
