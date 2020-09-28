@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Auth from '../../modules/Auth'
 
 const Profile = () => {
@@ -20,8 +21,11 @@ const Profile = () => {
         <div className='profile-container'>
             {data ? (
                 <>
-                    <h2>Welcome to your profile, {data.name}</h2>
-                    <p>Here are you favorite items!</p>
+                    <h2>Welcome to OSNY, {data.name}!</h2>
+                    <div className='shop-button-container'>
+                        <Link to='/shop/collection' className='shop-button'>Shop by collection</Link>
+                        <Link to='/shop/all' className='shop-button'>Shop all products</Link>
+                    </div>
                 </>
             ) : <h1>Loading...</h1>}
         </div>

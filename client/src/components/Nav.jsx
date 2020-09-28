@@ -15,6 +15,7 @@ function Nav(props) {
                         ? <Link to='/logout' onClick={props.logout}>Logout</Link>
                         : <Link to='/login'>Login</Link>
                     }  
+                    <Link to='/cart'>Cart</Link>
                 </div>
             </div>
         </nav>

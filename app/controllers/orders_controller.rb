@@ -27,7 +27,8 @@ class OrdersController < ApplicationController
    
   def addProduct
     product = Product.find(params[:product_id])
-    order_items = OrderProduct.create(order_id: params[:order_id], product_id: params[:product_id], product_price: product.price_in_database)
+    order = Order.find(params[:order_id])
+    order_items = OrderProduct.create(order_id: order.id, product_id: product.id, product_price: product.price_in_database)
 
     if order_items
       render json: order_items

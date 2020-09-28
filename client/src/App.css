@@ -11,7 +11,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding-top: 10vh;
   padding-bottom: 10vh;
@@ -127,23 +127,32 @@ footer h4 {
 
 /* Main containers */
 main {
-  flex-grow: 1;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 100vw;
+  padding: 20px 0;
 }
 
 /* About page */
 .about1, .about3 {
   position: relative;
-  right: 15em;
+  right: 20vw;
+  max-width: 35vw;
+  text-align: right;
 }
 
 .about2 {
   position: relative;
-  left: 15em;
+  left: 20vw;
+  max-width: 35vw;
+  text-align: left;
+}
+
+.about-heading {
+  margin-bottom: 40px;
 }
 
 /* Shop-by page */
@@ -188,6 +197,7 @@ main {
   background: gainsboro;
   padding: .5em 2em;
   border-radius: 20px;
+  margin: 30px;
 }
 
 .shop-button:hover {
@@ -224,13 +234,13 @@ main {
 }
 
 .collection-image {
-  background-image: url('./images/londonfog.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 0 -15em;
   height: 100%;
   width: 100%;
   opacity: .8;
+  overflow-y: hidden;
+}
+.collection-image img {
+  width: 100%;
 }
 
 .collection {
@@ -242,6 +252,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
@@ -259,6 +270,14 @@ main {
   box-sizing: border-box;
   border-radius: 20px;
   padding: 0 20px 10px;
+  align-items: center;
+}
+
+.right-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-details h3 {
@@ -314,13 +333,6 @@ input:last-child {
   margin: 20px;
 }
 
-.product-image-container {
-  border: .5px solid gray;
-  border-radius: 15px;
-  height: 12em;
-  margin-bottom: 15px;
-}
-
 .products-container {
   display: flex;
   flex-direction: row;
@@ -330,4 +342,35 @@ input:last-child {
   width: 100%;
   padding: 30px;
   box-sizing: border-box;
+}
+
+.product-image {
+  height: 70vh;
+  width: auto;
+  border-radius: 20px;
+}
+
+.product-image-tile {
+  height: 13em;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.shop-button-container {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  height: 2.5em;
+  border-radius: 15px;
+  width: 10em;
+  border: .5px solid gainsboro;
+  background-color: gainsboro;
+}
+
+button:hover {
+  background-color: gray;
 }
