@@ -32,13 +32,14 @@ class AllProducts extends React.Component {
     render() {
         return (
             <>
-            <div className='shop-button-container'>
-                {(this.props.currentPage === 'index') ? <Link to='/shop/collection' className='shop-button'>Shop by collection</Link> : <Link to='/shop/all' className='shop-button'>Shop all products</Link>}
-                {this.props.currentPage === 'collectionproducts' && <Link to='/shop/collection' className='shop-button'>Back to collections</Link>}
-            </div>
+            <h2 className='shop-header'>Keepin these old souls alive</h2>
             <div className='products-container'>
                 {this.props.currentPage === 'index' && this.allProductsMap() }
                 {this.props.currentPage === 'collectionproducts' && this.collectionProductsMap() }
+            </div>
+            <div className='shop-button-container'>
+                {(this.props.currentPage === 'index') ? <Link to='/shop/collection' className='shop-button'>Shop by collection</Link> : <Link to='/shop/all' className='shop-button'>Shop all products</Link>}
+                {this.props.currentPage === 'collectionproducts' && <Link to='/shop/collection' className='shop-button'>Back to collections</Link>}
             </div>
             </>
         )

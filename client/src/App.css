@@ -215,6 +215,10 @@ main {
   transition: ease-in-out .2s;
 }
 
+.shop-header {
+  margin-top: 40px;
+}
+
 /* Collections page */
 
 .collection-container {
@@ -366,7 +370,7 @@ input:last-child {
 }
 
 .shop-button-container {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
