@@ -29,7 +29,7 @@ class UserForm extends React.Component {
 
     render() {
         return(
-            <form onSubmit={(evt) => this.props.handleFormSubmit(evt, this.props.state.route, {user: this.state})}>
+            <form onSubmit={(evt) => this.props.handleFormSubmit(evt, this.props.state.route, (this.props.currentPage === ('new')) ? {user: this.state} : this.state)}>
                 {this.props.currentPage === ('new') && <input type="text" name="name" placeholder="name" value={this.state.name} onChange={this.handleFormChanges} />}
                 {this.props.currentPage === ('new') && <input type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleFormChanges} />}
                 <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleFormChanges} required />

@@ -1,7 +1,7 @@
 import React from 'react'
 
 class SingleProduct extends React.Component {
-    render(props) {
+    render() {
         return (
             <main className='single-product-container'>
                 <div>product image will go here</div>
@@ -9,6 +9,7 @@ class SingleProduct extends React.Component {
                     <h3>{this.props.singleProductData.title}</h3>
                     <p>{this.props.singleProductData.description}</p>
                     <p>${this.props.singleProductData.price}</p>
+                    <button onClick={() => this.props.userOrders(this.props.singleProductData.id)}>Add to cart</button>
                 </div>
             </main>
         )

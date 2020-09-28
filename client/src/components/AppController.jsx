@@ -15,7 +15,7 @@ class AppController extends React.Component {
             allCollectionData: null,
             collectionProductsData: null,
             currentPage: props.currentPage,
-            currentId: props.currentId
+            currentId: props.currentId,
         })
     }
 
@@ -84,7 +84,7 @@ class AppController extends React.Component {
             case 'collections':
                 return <Collections allCollectionData={this.state.allCollectionData} />
             case 'show':
-                return <SingleProduct singleProductData={this.state.singleProductData} />
+                return <SingleProduct singleProductData={this.state.singleProductData} userOrders={this.props.userOrders} />
             case 'collectionproducts':
                 return <AllProducts currentPage={this.state.currentPage} collectionProductsData={this.state.collectionProductsData} />
         }

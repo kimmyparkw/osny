@@ -23,33 +23,59 @@ class App extends React.Component{
       user: null,
       shouldFireRedirect: false,
       redirectPath: '',
+      orderId: null,
+      userId: null,
     }
   }
 
-  // startOrder = () =>{
-  //   fetch('/user/:id/orders')
-  //   method: 'POST'
-  // }
+  startOrder = () =>{
+    fetch(`/user/${this.state.userId}/orders`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        // token: Auth.getToken(),
+        // 'Authorization': `Token ${Auth.getToken()}`
+      },
+      body: JSON.stringify({user_id: this.state.userId})
+    }).then(res => res.json())
+    .then(res => {
+      this.setState({
+        orderId: res.id
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 
-  // addToOrder = () => {
-  //   fetch('/user/:id/order/:id')
-  //   method: 'POST'
-  // }
+  addToOrder = (productId) => {
+    console.log('product id', this.state.currentId)
+    fetch(`/user/${this.state.userId}/order/${this.state.orderId}`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        // token: Auth.getToken(),
+        // 'Authorization': `Token ${Auth.getToken()}`
+      },
+      body: JSON.stringify({order_id: this.state.orderId, product_id: productId})
+    }).then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => {
+      console.log(err)
+    })
+  }
 
-  // userOrders = () => {
-  //   if (this.state.orderId) {
-  //     this.addToOrder()
-  //   }
-  //   else {
-  //     this.startOrder()
-  //     this.addToOrder()
-  //   }
-  // }
+  userOrders = (productId) => {
+    if (this.state.orderId) {
+      this.addToOrder(productId)
+      console.log('user order product id', productId)
+    }
+    else {
+      this.startOrder()
+    }
+  }
 
 
   handleFormSubmit = (e, route, values) => {
-    console.log('route', route)
-    console.log('values', values)
     e.preventDefault()
     fetch(route, {
       method: "POST",
@@ -64,7 +90,7 @@ class App extends React.Component{
         this.setState({
           auth: Auth.isUserAuthenticated(),
           shouldFireRedirect: true,
-          redirectPath: '/profile'
+          redirectPath: '/profile',
         })
       }
     }).catch(err => {
@@ -87,6 +113,31 @@ class App extends React.Component{
     })
   }
 
+  componentDidMount() {
+    fetch('/profile', {
+      headers: {
+          token: Auth.getToken(),
+          'Authorization': `Token ${Auth.getToken()}`
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+        this.setState({
+            user: res,
+            userId: res.user.id
+        })
+    })
+  }
+  
+  
+  // setUser = (userData) => {
+  //   console.log(this.state.auth)
+  //   this.setState({
+  //     user: userData,
+  //     userId: userData.user.id
+  //   })
+  // }
+
   render() {
     return (
       <div className="App">
@@ -95,9 +146,9 @@ class App extends React.Component{
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/shop" component={ShopBy} />
-          <Route exact path="/shop/all" render={() => (<AppController currentPage='index' />)} />
+          <Route exact path="/shop/all" render={() => (<AppController currentPage='index' userId={this.state.userId} />)} />
           <Route exact path="/shop/collection" render={() => (<AppController currentPage='collections' />)} />
-          <Route exact path="/shop/product/:id" render={(props) => (<AppController currentPage='show' currentId={props.match.params.id} />)} />
+          <Route exact path="/shop/product/:id" render={(props) => (<AppController currentPage='show' userOrders={this.userOrders} currentId={props.match.params.id} />)} />
           <Route exact path="/shop/collection/:id/products" render={(props) => (<AppController currentPage='collectionproducts' currentId={props.match.params.id} />)} />
           <Route exact path="/register" render={() => (
             this.state.auth

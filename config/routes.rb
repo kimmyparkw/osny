@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   post "/auth/register" => "users#create"
 
 
-  get "/user/:id/orders" => "orders#index"
-  post "/user/:id/order" => "orders#create"
-  get "/user/:id/order/:id" => "orders#show"
+  # get "/user/:id/orders" => "orders#index"
+  post "/user/:id/orders" => "orders#create"
+  get "/user/orders/:id" => "orders#show"
+  post "/user/:id/order/:id" => "orders#addProduct"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :require_login
-  before_action :set_order, only: [:show, :addProduct, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:create, :addProduct]
+  before_action :set_order, only: [:show, :destroy]
 
   # GET /orders
   def index
@@ -27,8 +27,13 @@ class OrdersController < ApplicationController
    
   def addProduct
     product = Product.find(params[:product_id])
+    order_items = OrderProduct.create(order_id: params[:order_id], product_id: params[:product_id], product_price: product.price_in_database)
 
-    order_items = OrderProduct.create(order_id: order.id, product_id: params[:product_id], product_price: product.price_in_cents)
+    if order_items
+      render json: order_items
+    else
+      render error: {error: 'Could not add products'}, status: 400
+    end
   end
 
   # DELETE /orders/1
