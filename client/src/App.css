@@ -117,11 +117,20 @@ footer .color {
   background-color: gainsboro;
 }
 
-footer h4 {
-  position: absolute;
-  text-align: center;
+.footer-socials {
+  height: 2em;
+  margin-left: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  position: absolute;
+
+}
+
+footer h4 {
   font-family: 'Philosopher', sans-serif;
 }
 
@@ -374,3 +383,4 @@ button {
 button:hover {
   background-color: gray;
 }
+
