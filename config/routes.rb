@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get "/profile" => "users#profile"
   post "/auth/register" => "users#create"
 
-  
-  get "/user/:id/order" => "orders#index"
+
+  get "/user/:id/orders" => "orders#index"
   post "/user/:id/order" => "orders#create"
   get "/user/:id/order/:id" => "orders#show"
 

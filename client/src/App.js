@@ -21,16 +21,30 @@ class App extends React.Component{
     this.state = {
       auth: Auth.isUserAuthenticated(),
       user: null,
-      loginUserName: '',
-      loginPassword: '',
-      registerUserName: '',
-      registerEmail: '',
-      registerPassword: '',
-      registerName: '',
       shouldFireRedirect: false,
       redirectPath: '',
     }
   }
+
+  // startOrder = () =>{
+  //   fetch('/user/:id/orders')
+  //   method: 'POST'
+  // }
+
+  // addToOrder = () => {
+  //   fetch('/user/:id/order/:id')
+  //   method: 'POST'
+  // }
+
+  // userOrders = () => {
+  //   if (this.state.orderId) {
+  //     this.addToOrder()
+  //   }
+  //   else {
+  //     this.startOrder()
+  //     this.addToOrder()
+  //   }
+  // }
 
 
   handleFormSubmit = (e, route, values) => {

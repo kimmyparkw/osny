@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :update, :destroy]
+  before_action :require_login
+  before_action :set_order, only: [:show, :addProduct, :destroy]
 
   # GET /orders
   def index
-    @orders = Order.where(user_id: params[:user_id], id: params[:id])
+    @orders = Order.where(user_id: params[:user_id])
 
     render json: @orders
   end
@@ -13,26 +14,22 @@ class OrdersController < ApplicationController
     render json: @order
   end
 
-  # POST /orders
+  
   def create
-    product_1 = Product.find(order_params[:product_id])
-    quantity_1 = order_params[:quantity]
+    @order = Order.create(user_id: params[:user_id])
 
-    order = Order.create(user_id: order_params[:user_id] )
-    order_items = OrderItem.create(order_id: order.id, product_id: order_params[:product_id], item_price: product_1.price_in_cents)
-    user = User.find(order_params[:user_id])
-    user.update(current_order: order.id )
-    order_items = order.order_items
+    if @order
+      render json: @order
+    else
+      render error: { error: 'Could not create order' }, status: 400
+    end
   end
+   
+  def addProduct
+    product = Product.find(params[:product_id])
 
-  # # PATCH/PUT /orders/1
-  # def update
-  #   if @order.update(order_params)
-  #     render json: @order
-  #   else
-  #     render json: @order.errors, status: :unprocessable_entity
-  #   end
-  # end
+    order_items = OrderProduct.create(order_id: order.id, product_id: params[:product_id], product_price: product.price_in_cents)
+  end
 
   # DELETE /orders/1
   def destroy
@@ -45,9 +42,5 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
-    def order_params
-      params.require(:order).permit(:user_id)
-    end
 end
 
