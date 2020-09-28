@@ -24,6 +24,9 @@ Heroku: https://oldsouls-newyou.herokuapp.com/
 # Schema Diagram
 <img src='Screen Shot 2020-09-21 at 3.35.26 PM.png' />
 
+# Wireframes
+https://github.com/kimmyparkw/osny/blob/main/wireframes.pdf
+
 # Use
 - In the root directory, 'gem install'
 - In the client directory, 'yarn install'
