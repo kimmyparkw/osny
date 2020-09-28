@@ -5,7 +5,7 @@ ActiveAdmin.register Collection do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :release_date
+  permit_params :title, :release_date, :image
   #
   # or
   #
